@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-2.0.3.js"></script>
+    <script src="~/Scripts/knockout-2.3.0.js"></script>
+    <script src="~/Scripts/user.js"></script>
+    <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+    <style type="text/css">
+        table.imagetable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+
+            table.imagetable thead {
+                background: #b5cfd2 url('/Content/images/cell-blue.jpg');
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                background: #dcddc0 url('/Content/images/cell-grey.jpg');
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

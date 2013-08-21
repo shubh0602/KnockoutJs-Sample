@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>Sample Knockout Page</h2>
+<table class="imagetable" id="ListOfUsers">
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Date Of Birth</td>
+            <td>Others</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: MyAppNamespace_UserList.userList()">
+        <tr>
+            <td data-bind="text: FirstName"></td>
+            <td data-bind="text: LastName"></td>
+            <td data-bind="text: DOB"></td>
+            <td data-bind="text: Others"></td>
+            <td><a data-bind="click: MyAppNamespace_UserList.fnUserDetails">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="imagetable" id="UserDetails">
+    <tr>
+        <td>First Name</td>
+        <td>
+            <input data-bind="value: MyAppNamespace_UserList.userDetails().FirstName" /></td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>
+            <input data-bind="value: MyAppNamespace_UserList.userDetails().LastName" /></td>
+    </tr>
+    <tr>
+        <td>DOB</td>
+        <td>
+            <input data-bind="value: MyAppNamespace_UserList.userDetails().DOB" /></td>
+    </tr>
+    <tr>
+        <td>Others</td>
+        <td>
+            <input data-bind="value: MyAppNamespace_UserList.userDetails().Others" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a data-bind="click: MyAppNamespace_UserList.getUserList">Go back to Listing</a></td>
+    </tr>
+</table>
+
+
