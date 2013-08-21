@@ -10,21 +10,33 @@ namespace KnockoutJs_Sample.Controllers
 {
     public class UserController : ApiController
     {
+        public static SampleDataClassesDataContext dbctx = new SampleDataClassesDataContext();
+
         // GET api/user
         public IEnumerable<User> Get()
         {
-            return MockGetUsers();
+            return dbctx.Users.ToList();
+
+            //return MockGetUsers();
         }
 
         // GET api/user/5
         public User Get(int id)
         {
-            return MockGetUsers().FirstOrDefault(x=>x.Id==id);
+            return dbctx.Users.FirstOrDefault(x => x.Id == id);
+            //return MockGetUsers().FirstOrDefault(x=>x.Id==id);
         }
 
         // POST api/user
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void Post(User value)
         {
+            var user = dbctx.Users.FirstOrDefault(x => x.Id == value.Id);
+            user.FirstName=value.FirstName;
+            user.LastName=value.LastName;
+            user.DOB=value.DOB;
+            user.Others=value.Others;
+            
         }
 
         // PUT api/user/5
@@ -36,9 +48,10 @@ namespace KnockoutJs_Sample.Controllers
         public void Delete(int id)
         {
         }
-        private IEnumerable<User> MockGetUsers() {
-            List<User> users = new List<Models.User>();
-            User user1 = new User()
+        private IEnumerable<Models.User> MockGetUsers()
+        {
+            List<Models.User> users = new List<Models.User>();
+            Models.User user1 = new Models.User()
             {
                 Id = 1,
                 FirstName = "Shubh",
@@ -46,7 +59,7 @@ namespace KnockoutJs_Sample.Controllers
                 DOB = "06/02/1986",
                 Others = "NA"
             };
-            User user2 = new User()
+            Models.User user2 = new Models.User()
             {
                 Id = 2,
                 FirstName = "Neeraj",
@@ -54,7 +67,7 @@ namespace KnockoutJs_Sample.Controllers
                 DOB = "06/02/1986",
                 Others = "NA"
             };
-            User user3 = new User()
+            Models.User user3 = new Models.User()
             {
                 Id = 3,
                 FirstName = "Abhijit",
